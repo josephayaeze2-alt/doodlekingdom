@@ -1,0 +1,1252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doodle Kingdom | Art Made Magical</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #10071f;
+  --bg2: #190d2c;
+  --purple: #7138b5;
+  --purple2: #9c65e4;
+  --gold: #f8d77b;
+  --gold2: #fff0bd;
+  --white: #fffaf4;
+  --muted: #c8b9da;
+  --panel: #211333;
+  --border: rgba(248,215,123,.19);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* BACKGROUND */
+
+.background-glow {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: .12;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glow-one {
+  background: #9b4dff;
+  top: -200px;
+  left: -180px;
+}
+
+.glow-two {
+  background: #e5ae43;
+  right: -250px;
+  top: 800px;
+}
+
+/* NAVIGATION */
+
+header {
+  height: 82px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(16,7,31,.82);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -.7px;
+}
+
+.logo-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f8d77b, #b77b31);
+  display: grid;
+  place-items: center;
+  color: #251332;
+  font-size: 23px;
+  box-shadow: 0 5px 25px rgba(248,215,123,.2);
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.nav-button {
+  padding: 12px 20px;
+  background: var(--gold);
+  color: #261632;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  border: none;
+  transition: .25s;
+}
+
+.nav-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(248,215,123,.25);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 680px;
+  padding: 105px 8% 90px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 55px;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 15px;
+  border: 1px solid var(--border);
+  background: rgba(248,215,123,.06);
+  border-radius: 100px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  margin-bottom: 27px;
+}
+
+.eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(52px, 6.4vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -3px;
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+  display: block;
+  font-style: italic;
+}
+
+.hero-description {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 490px;
+  margin-bottom: 34px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #ffe69b, #d8a94f);
+  color: #27152d;
+  border: none;
+  padding: 17px 25px;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 14px;
+  box-shadow: 0 9px 30px rgba(248,215,123,.16);
+  transition: .25s;
+}
+
+.primary-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(248,215,123,.28);
+}
+
+.secondary-button {
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.14);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: .25s;
+}
+
+.secondary-button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.hero-note {
+  margin-top: 29px;
+  color: #9c8cae;
+  font-size: 12px;
+}
+
+/* HERO ART */
+
+.hero-art {
+  min-height: 440px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.art-orbit {
+  position: absolute;
+  width: 390px;
+  height: 390px;
+  border-radius: 50%;
+  border: 1px solid rgba(248,215,123,.17);
+  box-shadow: 0 0 100px rgba(139,77,211,.12);
+}
+
+.art-orbit::before {
+  content: "";
+  position: absolute;
+  inset: 25px;
+  border-radius: 50%;
+  border: 1px dashed rgba(248,215,123,.2);
+}
+
+.art-main {
+  width: min(350px, 85vw);
+  height: 390px;
+  border-radius: 180px 180px 35px 35px;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255,255,255,.18), transparent 28%),
+    linear-gradient(145deg, #8b52c9, #3b1a62 65%, #261039);
+  border: 1px solid rgba(255,255,255,.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 30px 100px rgba(0,0,0,.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.art-main::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background: rgba(255,255,255,.08);
+  filter: blur(60px);
+  border-radius: 50%;
+}
+
+.art-crown {
+  font-size: 85px;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.3));
+  animation: float 4s ease-in-out infinite;
+  position: relative;
+}
+
+.art-main h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 31px;
+  color: var(--gold2);
+  margin-top: 15px;
+  position: relative;
+}
+
+.art-main p {
+  color: #e5d4f6;
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-top: 8px;
+  position: relative;
+}
+
+.floating-star {
+  position: absolute;
+  color: var(--gold);
+  font-size: 28px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.star-one { top: 35px; left: 15px; }
+.star-two { bottom: 65px; right: 5px; animation-delay: 1s; }
+.star-three { top: 90px; right: 25px; animation-delay: 2s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-13px) rotate(5deg); }
+}
+
+/* TRUST STRIP */
+
+.trust-strip {
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.018);
+  padding: 24px 7%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+
+.trust-item {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.trust-item strong {
+  color: var(--gold);
+  display: block;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+/* SECTIONS */
+
+.section {
+  padding: 100px 8%;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 48px;
+}
+
+.section-tag {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(34px, 5vw, 52px);
+  margin-bottom: 15px;
+}
+
+.section-heading h2 span {
+  color: var(--gold);
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* DRAWING CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: linear-gradient(155deg, #2b1940, #1a1028);
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 20px;
+  padding: 28px 22px;
+  min-height: 225px;
+  transition: .3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  background: rgba(157,101,228,.08);
+  filter: blur(35px);
+  right: -60px;
+  bottom: -60px;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(248,215,123,.45);
+  box-shadow: 0 18px 40px rgba(0,0,0,.2);
+}
+
+.card-icon {
+  width: 59px;
+  height: 59px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  font-size: 29px;
+  background: rgba(248,215,123,.1);
+  border: 1px solid rgba(248,215,123,.15);
+  margin-bottom: 22px;
+}
+
+.card h3 {
+  font-size: 17px;
+  margin-bottom: 9px;
+}
+
+.card p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* HOW IT WORKS */
+
+.steps-section {
+  background: linear-gradient(180deg, transparent, rgba(113,56,181,.09), transparent);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.step {
+  text-align: center;
+  padding: 25px;
+}
+
+.step-number {
+  width: 57px;
+  height: 57px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ffe69b, #c18b3d);
+  color: #291633;
+  font-weight: 900;
+  font-size: 21px;
+  box-shadow: 0 10px 25px rgba(248,215,123,.12);
+}
+
+.step h3 {
+  margin-bottom: 9px;
+  font-size: 17px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ORDER CTA */
+
+.order-section {
+  padding: 35px 8% 110px;
+}
+
+.order-panel {
+  max-width: 1050px;
+  margin: auto;
+  border: 1px solid rgba(248,215,123,.3);
+  border-radius: 28px;
+  padding: 65px 35px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(248,215,123,.15), transparent 50%),
+    linear-gradient(140deg, #40205e, #21102f);
+  box-shadow: 0 25px 80px rgba(0,0,0,.2);
+}
+
+.order-panel .crown {
+  font-size: 43px;
+  margin-bottom: 12px;
+}
+
+.order-panel h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(32px, 5vw, 48px);
+  margin-bottom: 12px;
+}
+
+.order-panel h2 span {
+  color: var(--gold);
+}
+
+.order-panel p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 35px 8%;
+  border-top: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: #9d8eae;
+  font-size: 12px;
+}
+
+footer strong {
+  color: var(--gold);
+}
+
+/* BOOKING MODAL */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(5,2,12,.86);
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
+  padding: 20px 12px;
+}
+
+.modal-content {
+  background: linear-gradient(150deg, #2e1945, #180d29);
+  border: 1px solid rgba(248,215,123,.35);
+  border-radius: 22px;
+  padding: 30px;
+  width: 100%;
+  max-width: 540px;
+  margin: 20px auto;
+  position: relative;
+  box-shadow: 0 25px 90px rgba(0,0,0,.5);
+}
+
+.modal-top {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.modal-top .modal-crown {
+  font-size: 37px;
+  margin-bottom: 5px;
+}
+
+.modal-top h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--gold);
+  font-size: 29px;
+}
+
+.modal-top p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  font-size: 28px;
+}
+
+.close:hover {
+  color: var(--gold);
+}
+
+label {
+  display: block;
+  color: #f2e6ff;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 15px 0 7px;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: #160d23;
+  color: white;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 14px;
+  outline: none;
+  transition: .2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(248,215,123,.09);
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.tip-note {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+.payment-notice {
+  margin: 22px 0;
+  padding: 16px;
+  background: rgba(248,215,123,.07);
+  border: 1px solid rgba(248,215,123,.3);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.8;
+}
+
+.submit-button {
+  width: 100%;
+}
+
+.small-note {
+  text-align: center;
+  color: #bba9d0;
+  font-size: 10px;
+  margin-top: 13px;
+  line-height: 1.7;
+}
+
+#statusMessage {
+  text-align: center;
+  color: var(--gold);
+  font-size: 13px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 75px;
+  }
+
+  .hero-content {
+    margin: auto;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-art {
+    min-height: 390px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:650px) {
+  header {
+    height: auto;
+    padding: 15px 5%;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .hero {
+    padding: 70px 6%;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .art-orbit {
+    width: 300px;
+    height: 300px;
+  }
+
+  .art-main {
+    width: 260px;
+    height: 310px;
+  }
+
+  .art-main h2 {
+    font-size: 25px;
+  }
+
+  .trust-strip {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .section {
+    padding: 75px 6%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .order-section {
+    padding: 20px 5% 75px;
+  }
+
+  .order-panel {
+    padding: 45px 20px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .modal-content {
+    padding: 24px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-glow glow-one"></div>
+<div class="background-glow glow-two"></div>
+
+<header>
+  <a href="#home" class="logo">
+    <div class="logo-icon">♛</div>
+    <div>Doodle <span>Kingdom</span></div>
+  </a>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#drawings">Explore</a>
+    <a href="#how">How It Works</a>
+    <a href="#order">Order</a>
+  </nav>
+
+  <button class="nav-button" onclick="openBooking()">
+    Start an Order →
+  </button>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      WELCOME TO THE KINGDOM
+    </div>
+
+    <h1>
+      Your Ideas.
+      <span>Our Art.</span>
+    </h1>
+
+    <p class="hero-description">
+      Step into a world of creativity. From awesome characters
+      to adorable pets, turn your imagination into something
+      special with Doodle Kingdom.
+    </p>
+
+    <div class="hero-actions">
+      <button class="primary-button" onclick="openBooking()">
+        ✨ Create Your Drawing
+      </button>
+
+      <a href="#drawings" class="secondary-button">
+        Explore Drawings ↓
+      </a>
+    </div>
+
+    <p class="hero-note">
+      ✦ Custom artwork made with creativity and care.
+    </p>
+
+  </div>
+
+  <div class="hero-art">
+    <div class="art-orbit"></div>
+
+    <span class="floating-star star-one">✦</span>
+    <span class="floating-star star-two">✧</span>
+    <span class="floating-star star-three">✦</span>
+
+    <div class="art-main">
+      <div class="art-crown">👑</div>
+      <h2>Doodle Kingdom</h2>
+      <p>WHERE IMAGINATION RULES</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- TRUST STRIP -->
+
+<div class="trust-strip">
+  <div class="trust-item">
+    <strong>✦ Custom Creations</strong>
+    Made from your ideas
+  </div>
+
+  <div class="trust-item">
+    <strong>♛ Your Imagination</strong>
+    Your drawing, your way
+  </div>
+
+  <div class="trust-item">
+    <strong>✧ Made with Care</strong>
+    Every creation matters
+  </div>
+</div>
+
+<!-- DRAWINGS -->
+
+<section class="section" id="drawings">
+
+  <div class="section-heading">
+    <div class="section-tag">THE ART COLLECTION</div>
+    <h2>Explore the <span>Kingdom</span></h2>
+    <p>
+      Every great drawing starts with an idea.
+      Choose your inspiration and tell us what you want created.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-icon">🐶</div>
+      <h3>Pet Portraits</h3>
+      <p>
+        Turn your favorite furry friend into a special
+        custom drawing.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎮</div>
+      <h3>Game Characters</h3>
+      <p>
+        Bring your favorite game-inspired characters
+        into the drawing world.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧙</div>
+      <h3>Custom Characters</h3>
+      <p>
+        Heroes, villains, creatures, and characters
+        made from your imagination.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <h3>Your Own Ideas</h3>
+      <p>
+        Have something completely different in mind?
+        Let's hear your idea!
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="section steps-section" id="how">
+
+  <div class="section-heading">
+    <div class="section-tag">THE MAGIC PROCESS</div>
+    <h2>How It <span>Works</span></h2>
+    <p>
+      Getting your custom drawing is simple.
+      Here's how to begin.
+    </p>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>Choose Your Drawing</h3>
+      <p>
+        Tell us what you want drawn and describe
+        your creative idea.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>Request Delivery</h3>
+      <p>
+        Select your preferred delivery date and time
+        and submit your order request.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>Get Your Artwork</h3>
+      <p>
+        Once your parent confirms the order and
+        arrangements, your drawing can be delivered.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ORDER CTA -->
+
+<section class="order-section" id="order">
+  <div class="order-panel">
+
+    <div class="crown">👑</div>
+
+    <h2>Ready to Create <span>Magic?</span></h2>
+
+    <p>
+      Your next favorite drawing starts with one idea.
+      Let's bring it to life!
+    </p>
+
+    <button class="primary-button" onclick="openBooking()">
+      ✨ Start Your Order
+    </button>
+
+  </div>
+</section>
+
+<footer>
+  <div><strong>♛ Doodle Kingdom</strong> · Where Imagination Rules</div>
+  <div>© 2026 Doodle Kingdom. Made with creativity.</div>
+</footer>
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="bookingModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeBooking()">×</button>
+
+    <div class="modal-top">
+      <div class="modal-crown">👑</div>
+      <h2>Create Your Order</h2>
+      <p>Let's bring your imagination to life.</p>
+    </div>
+
+    <form id="bookingForm">
+
+      <label for="customer">Your Name</label>
+      <input type="text" id="customer" name="customer"
+        required maxlength="80" placeholder="Enter your name">
+
+      <label for="customerEmail">Your Email</label>
+      <input type="email" id="customerEmail" name="customerEmail"
+        required maxlength="120" placeholder="you@example.com">
+
+      <label for="drawing">Choose Your Drawing</label>
+      <select id="drawing" name="drawing" required>
+        <option value="">Select a category</option>
+        <option value="Pet Art">🐶 Pet Art</option>
+        <option value="Game Character">🎮 Game Character</option>
+        <option value="Custom Character">🧙 Custom Character</option>
+        <option value="Other Drawing">⭐ Other Drawing</option>
+      </select>
+
+      <label for="suggestion">Describe Your Idea</label>
+      <textarea id="suggestion" name="suggestion"
+        required maxlength="1000"
+        placeholder="Tell us what you want drawn..."></textarea>
+
+      <label for="deliveryDate">Preferred Delivery Date</label>
+      <input type="date" id="deliveryDate" name="deliveryDate" required>
+
+      <label for="deliveryTime">Preferred Delivery Time</label>
+      <input type="time" id="deliveryTime" name="deliveryTime" required>
+
+      <label for="address">Delivery Address</label>
+      <textarea id="address" name="address"
+        required maxlength="300"
+        placeholder="Enter delivery address"></textarea>
+
+      <label for="tip">Would You Like to Leave a Tip? (Optional)</label>
+      <select id="tip" name="tip">
+        <option value="0">No tip</option>
+        <option value="1">$1 tip</option>
+        <option value="2">$2 tip</option>
+        <option value="5">$5 tip</option>
+        <option value="10">$10 tip</option>
+      </select>
+
+      <p class="tip-note">
+        Tips are completely optional. Thank you for supporting
+        Doodle Kingdom!
+      </p>
+
+      <div class="payment-notice">
+        ALL PAYMENTS ARE PAID UPFRONT IN PERSON.<br>
+        NO ONLINE PAYMENTS.
+      </div>
+
+      <button class="primary-button submit-button"
+        id="submitButton" type="submit">
+        Submit My Order →
+      </button>
+
+      <p class="small-note">
+        Your requested delivery time is not confirmed until
+        a parent approves the order and delivery arrangements.
+      </p>
+
+      <div id="statusMessage" aria-live="polite"></div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+// EMAILJS SETTINGS
+
+const SERVICE_ID = "service_97jc65g";
+const TEMPLATE_ID = "template_x34bs3i";
+const PUBLIC_KEY = "4-NwvfnbC4svqvL1B";
+
+emailjs.init({
+  publicKey: PUBLIC_KEY
+});
+
+// MODAL CONTROLS
+
+const modal = document.getElementById("bookingModal");
+
+function openBooking() {
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
+}
+
+function closeBooking() {
+  modal.style.display = "none";
+  document.body.style.overflow = "";
+}
+
+window.addEventListener("click", function(event) {
+  if (event.target === modal) {
+    closeBooking();
+  }
+});
+
+// DATE SETTINGS
+
+const deliveryDate = document.getElementById("deliveryDate");
+
+function getLocalDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+deliveryDate.min = getLocalDate();
+
+// ORDER SUBMISSION
+
+const form = document.getElementById("bookingForm");
+const submitButton = document.getElementById("submitButton");
+const statusMessage = document.getElementById("statusMessage");
+
+let orderTimer = null;
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (!form.reportValidity()) return;
+
+  if (orderTimer) {
+    clearTimeout(orderTimer);
+  }
+
+  const tipValue = Number(form.elements.tip.value);
+
+  const order = {
+    customer_name: form.elements.customer.value.trim(),
+    customer_email: form.elements.customerEmail.value.trim(),
+    drawing_type: form.elements.drawing.value,
+    drawing_idea: form.elements.suggestion.value.trim(),
+    delivery_date: form.elements.deliveryDate.value,
+    delivery_time: form.elements.deliveryTime.value,
+    delivery_address: form.elements.address.value.trim(),
+    tip_amount: tipValue === 0
+      ? "No tip"
+      : "$" + tipValue.toFixed(2)
+  };
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Order Submitted ✓";
+
+  statusMessage.textContent =
+    "Your order request has been received! Your email will be sent in 2 minutes. Keep this page open.";
+
+  // TWO-MINUTE EMAIL DELAY
+
+  orderTimer = setTimeout(async function() {
+
+    statusMessage.textContent = "Sending your order to the Kingdom...";
+
+    try {
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        order
+      );
+
+      statusMessage.textContent =
+        "Your order email was sent successfully! Waiting for parent confirmation.";
+
+      form.reset();
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit My Order →";
+      orderTimer = null;
+
+    } catch (error) {
+
+      console.error("EmailJS error:", error);
+
+      statusMessage.textContent =
+        "We couldn't send your order email. Please ask your parent to check the email setup.";
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Try Again";
+      orderTimer = null;
+    }
+
+  }, 120000);
+
+});
+</script>
+
+</body>
+</html>
